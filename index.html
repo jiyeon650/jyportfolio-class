@@ -72,17 +72,20 @@
                 <div class="dashboard-body"><div class="mini-chart"></div><div class="mini-lines"><i></i><i></i><i></i></div></div>
               </div>
             </div>
-            <div class="project-info"><h3>Morrow</h3><p>팀의 몰입을 돕는 업무 관리 도구</p><a href="#contact" aria-label="Morrow 프로젝트 문의">↗</a></div>
+            <div class="project-info"><h3>Morrow</h3><p>팀의 몰입을 돕는 업무 관리 도구</p><span aria-hidden="true">↗</span></div>
+            <button class="project-card__trigger" type="button" data-project="morrow" aria-haspopup="dialog" aria-label="Morrow 프로젝트 상세 정보 보기"></button>
           </article>
           <article class="project-card project-card--peach reveal">
             <div class="project-topline"><span>02</span><span>2023 · BRANDING</span></div>
             <div class="project-visual visual-identity"><div class="identity-word">온기</div><span class="identity-circle"></span><span class="identity-line"></span></div>
-            <div class="project-info"><h3>On:gi</h3><p>일상에 작은 온기를 더하는 라이프스타일 브랜드</p><a href="#contact" aria-label="On:gi 프로젝트 문의">↗</a></div>
+            <div class="project-info"><h3>On:gi</h3><p>일상에 작은 온기를 더하는 라이프스타일 브랜드</p><span aria-hidden="true">↗</span></div>
+            <button class="project-card__trigger" type="button" data-project="ongi" aria-haspopup="dialog" aria-label="On:gi 프로젝트 상세 정보 보기"></button>
           </article>
           <article class="project-card project-card--lavender reveal">
             <div class="project-topline"><span>03</span><span>2023 · MOBILE APP</span></div>
             <div class="project-visual visual-mobile"><div class="phone"><div class="phone-notch"></div><div class="phone-copy">오늘의<br><strong>영감</strong>을<br>기록하세요.</div><div class="phone-button">+</div></div><span class="sparkle">✦</span></div>
-            <div class="project-info"><h3>Wander</h3><p>취향을 발견하는 여행 기록 앱</p><a href="#contact" aria-label="Wander 프로젝트 문의">↗</a></div>
+            <div class="project-info"><h3>Wander</h3><p>취향을 발견하는 여행 기록 앱</p><span aria-hidden="true">↗</span></div>
+            <button class="project-card__trigger" type="button" data-project="wander" aria-haspopup="dialog" aria-label="Wander 프로젝트 상세 정보 보기"></button>
           </article>
         </div>
       </section>
@@ -97,6 +100,21 @@
         </div>
       </section>
     </main>
+  </div>
+
+  <div class="project-modal" id="project-modal" hidden>
+    <div class="project-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" tabindex="-1">
+      <button class="project-modal__close" type="button" aria-label="프로젝트 상세 창 닫기">×</button>
+      <p class="project-modal__eyebrow">PROJECT DETAILS</p>
+      <h2 id="project-modal-title"></h2>
+      <p class="project-modal__notice">아래 상세 내용은 이해를 돕기 위한 예시이며, 실제 프로젝트 정보가 아닙니다.</p>
+      <dl class="project-modal__details">
+        <div><dt>프로젝트 설명</dt><dd id="project-modal-description"></dd></div>
+        <div><dt>담당한 역할</dt><dd id="project-modal-role"></dd></div>
+        <div><dt>사용한 기술</dt><dd id="project-modal-tools"></dd></div>
+        <div><dt>주요 성과</dt><dd id="project-modal-result"></dd></div>
+      </dl>
+    </div>
   </div>
 </body>
 </html>

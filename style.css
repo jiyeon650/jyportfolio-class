@@ -300,8 +300,37 @@ a {
 }
 
 .project-card {
+  position: relative;
   border-radius: 4px;
   overflow: hidden;
+  width: 100%;
+  transition: filter 0.2s;
+}
+
+.project-card:hover {
+  filter: brightness(0.98);
+}
+
+.project-card:focus-visible {
+  outline: 3px solid #789b30;
+  outline-offset: 4px;
+}
+
+.project-card__trigger {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.project-card__trigger:focus-visible {
+  outline: 3px solid #789b30;
+  outline-offset: -5px;
 }
 
 .project-card--mint {
@@ -521,6 +550,114 @@ a {
   font-size: 1.3rem;
 }
 
+.project-info > span {
+  position: absolute;
+  right: 22px;
+  bottom: 25px;
+  font-size: 1.3rem;
+}
+
+.project-modal[hidden] {
+  display: none;
+}
+
+.project-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(32, 35, 33, 0.58);
+  backdrop-filter: blur(5px);
+}
+
+.project-modal__dialog {
+  position: relative;
+  width: min(100%, 650px);
+  max-height: min(780px, 85vh);
+  overflow-y: auto;
+  padding: clamp(28px, 6vw, 54px);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--paper);
+  box-shadow: 0 24px 80px rgba(20, 25, 21, 0.2);
+}
+
+.project-modal__close {
+  position: absolute;
+  top: 17px;
+  right: 18px;
+  display: grid;
+  width: 40px;
+  height: 40px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.7rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.project-modal__close:hover {
+  background: var(--lime);
+}
+
+.project-modal__close:focus-visible {
+  outline: 3px solid #789b30;
+  outline-offset: 3px;
+}
+
+.project-modal__eyebrow {
+  margin: 0 0 15px;
+  color: var(--muted);
+  font-family: "DM Mono", monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+}
+
+.project-modal__dialog h2 {
+  margin: 0;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  letter-spacing: -0.07em;
+}
+
+.project-modal__notice {
+  margin: 15px 0 30px;
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+
+.project-modal__details {
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.project-modal__details > div {
+  display: grid;
+  grid-template-columns: minmax(110px, 0.7fr) 2fr;
+  gap: 18px;
+  padding: 19px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.project-modal__details dt {
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.project-modal__details dd {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.8;
+}
+
 .contact {
   border-top: 1px solid var(--line);
   padding: 110px 0 50px;
@@ -688,6 +825,20 @@ a {
   .project-list {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+
+  .project-modal {
+    padding: 14px;
+  }
+
+  .project-modal__dialog {
+    max-height: 90vh;
+  }
+
+  .project-modal__details > div {
+    grid-template-columns: 1fr;
+    gap: 7px;
+    padding: 15px 0;
   }
 
   .project-visual {
