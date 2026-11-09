@@ -96,6 +96,26 @@
           <p class="eyebrow"><span class="eyebrow-dot"></span> HAVE A PROJECT IN MIND?</p>
           <h2 id="contact-title" class="reveal">함께 멋진 것을<br><em>만들어볼까요?</em></h2>
           <a class="email-link" href="mailto:hello@seoyun.design">hello@seoyun.design <span>↗</span></a>
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="contact-form__field">
+              <label for="contact-name">이름 <span>(Name)</span></label>
+              <input id="contact-name" name="name" type="text" autocomplete="name" required aria-describedby="contact-name-error">
+              <p class="contact-form__error" id="contact-name-error" hidden></p>
+            </div>
+            <div class="contact-form__field">
+              <label for="contact-email">이메일 <span>(Email)</span></label>
+              <input id="contact-email" name="email" type="email" autocomplete="email" required aria-describedby="contact-email-error">
+              <p class="contact-form__error" id="contact-email-error" hidden></p>
+            </div>
+            <div class="contact-form__field">
+              <label for="contact-message">메시지 <span>(Message)</span></label>
+              <textarea id="contact-message" name="message" rows="5" required aria-describedby="contact-message-error"></textarea>
+              <p class="contact-form__error" id="contact-message-error" hidden></p>
+            </div>
+            <button class="contact-form__submit" type="submit">문의 내용 확인하기 <span>↗</span></button>
+            <p class="contact-form__notice">이 양식은 입력 내용을 확인하기 위한 기능이며, 이메일은 실제로 전송되지 않습니다.</p>
+            <p class="contact-form__status" id="contact-form-status" role="status" aria-live="polite"></p>
+          </form>
           <div class="contact-meta"><span>Instagram</span><span>LinkedIn</span><span>© <span id="year"></span> Seoyun Park</span></div>
         </div>
       </section>

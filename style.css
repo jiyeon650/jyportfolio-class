@@ -681,15 +681,117 @@ a {
   padding-bottom: 11px;
 }
 
+.contact-form {
+  width: min(100%, 560px);
+  margin-top: 42px;
+}
+
+.contact-form__field {
+  margin-bottom: 22px;
+}
+
+.contact-form__field label {
+  display: block;
+  margin-bottom: 9px;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.contact-form__field label span {
+  color: var(--muted);
+  font-family: "DM Mono", monospace;
+  font-size: 0.68rem;
+  font-weight: 400;
+}
+
+.contact-form__field input,
+.contact-form__field textarea {
+  display: block;
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 13px 14px;
+  background: rgba(255, 255, 255, 0.38);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.88rem;
+}
+
+.contact-form__field textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.contact-form__field input:focus,
+.contact-form__field textarea:focus {
+  outline: 2px solid #93bd31;
+  outline-offset: 2px;
+}
+
+.contact-form__field [aria-invalid="true"] {
+  border-color: #b94a36;
+}
+
+.contact-form__error {
+  margin: 7px 0 0;
+  color: #a63e2c;
+  font-size: 0.76rem;
+}
+
+.contact-form__submit {
+  border: 1px solid var(--ink);
+  border-radius: 30px;
+  padding: 12px 18px;
+  background: var(--ink);
+  color: var(--paper);
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.contact-form__submit:hover {
+  background: transparent;
+  color: var(--ink);
+}
+
+.contact-form__submit:focus-visible {
+  outline: 2px solid #93bd31;
+  outline-offset: 3px;
+}
+
+.contact-form__submit span {
+  margin-left: 8px;
+  color: #c8f169;
+}
+
+.contact-form__notice,
+.contact-form__status {
+  font-size: 0.75rem;
+  line-height: 1.7;
+}
+
+.contact-form__notice {
+  margin: 14px 0 0;
+  color: var(--muted);
+}
+
+.contact-form__status {
+  min-height: 1.3em;
+  margin: 8px 0 0;
+  color: #587621;
+  font-weight: 700;
+}
+
 .contact-meta {
   display: flex;
   gap: 28px;
   color: var(--muted);
   font-family: "DM Mono", monospace;
   font-size: 0.62rem;
-  position: absolute;
-  bottom: -47px;
-  right: 0;
+  flex-wrap: wrap;
+  margin-top: 46px;
 }
 
 .contact-meta span:nth-child(1),
@@ -850,9 +952,7 @@ a {
   }
 
   .contact-meta {
-    position: static;
-    margin-top: 90px;
-    flex-wrap: wrap;
+    margin-top: 38px;
     gap: 15px 22px;
   }
 

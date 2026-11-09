@@ -2,10 +2,34 @@ const header = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelectorAll(".site-nav a");
 const year = document.querySelector("#year");
+const contactForm = document.querySelector("#contact-form");
 const projectCards = document.querySelectorAll(".project-card__trigger[data-project]");
 const projectModal = document.querySelector("#project-modal");
 const modalCloseButton = projectModal.querySelector(".project-modal__close");
 const previousFocus = { element: null, bodyOverflow: "" };
+const contactFields = [
+  {
+    input: document.querySelector("#contact-name"),
+    error: document.querySelector("#contact-name-error"),
+    message: "이름을 입력해 주세요.",
+    isValid: (input) => input.value.trim().length > 0
+  },
+  {
+    input: document.querySelector("#contact-email"),
+    error: document.querySelector("#contact-email-error"),
+    message: (input) => input.value.length === 0
+      ? "이메일을 입력해 주세요."
+      : "올바른 이메일 주소를 입력해 주세요.",
+    isValid: (input) => input.value.length > 0 && input.validity.valid
+  },
+  {
+    input: document.querySelector("#contact-message"),
+    error: document.querySelector("#contact-message-error"),
+    message: "메시지를 입력해 주세요.",
+    isValid: (input) => input.value.trim().length > 0
+  }
+];
+const contactFormStatus = document.querySelector("#contact-form-status");
 
 const projectDetails = {
   morrow: {
@@ -86,6 +110,51 @@ function handleModalKeydown(event) {
 if (year) {
   year.textContent = new Date().getFullYear();
 }
+
+function clearContactFieldError(field) {
+  field.input.removeAttribute("aria-invalid");
+  field.error.textContent = "";
+  field.error.hidden = true;
+}
+
+contactForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  contactFormStatus.textContent = "";
+
+  contactFields.forEach(({ input }) => {
+    input.value = input.value.trim();
+  });
+
+  let firstInvalidField = null;
+
+  contactFields.forEach((field) => {
+    if (!field.isValid(field.input)) {
+      field.input.setAttribute("aria-invalid", "true");
+      field.error.textContent = typeof field.message === "function"
+        ? field.message(field.input)
+        : field.message;
+      field.error.hidden = false;
+      firstInvalidField ??= field.input;
+      return;
+    }
+
+    clearContactFieldError(field);
+  });
+
+  if (firstInvalidField) {
+    firstInvalidField.focus();
+    return;
+  }
+
+  contactFormStatus.textContent = "입력 내용이 확인되었습니다. 이메일은 전송되지 않았습니다.";
+});
+
+contactFields.forEach((field) => {
+  field.input.addEventListener("input", () => {
+    clearContactFieldError(field);
+    contactFormStatus.textContent = "";
+  });
+});
 
 projectCards.forEach((card) => {
   card.addEventListener("click", () => {
